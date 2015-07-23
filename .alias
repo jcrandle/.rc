@@ -1,0 +1,80 @@
+alias ll='ls -l'
+alias ls='ls -F'
+
+alias blog='less /tmp/build_portfolio_$(date +\%m\%d).out'
+alias blogs='less /tmp/build_portfolio_$(date +\%m\%d).out | grep SUCCESS | grep BUILD; ll $TOMCAT_HOME/webapps/*.war'
+
+alias cdd='cd $DEV_HOME; pwd; ll'
+alias cdt='cd $DEV_HOME/svn_onlinePortfolio; pwd; ls'
+alias cddg='cd $DEV_HOME/svn_onlinePortfolio/mydg; pwd; ls'
+alias cw='cpwar `findw`'
+alias e=emacs
+alias f5tst='java -Df5.properties=services-test.properties -jar $HOME/dev/online/tools/trunk/f5Explore/target/f5Explore*.jar output=poolsOnly'
+alias f5int='java -Df5.properties=services-int.properties -jar $HOME/dev/online/tools/trunk/f5Explore/target/f5Explore*.jar output=poolsOnly'
+alias findw="find ./ -name \"*.war\""
+alias gc='pushd ~/dev/online/onlinePortfolio/trunk/dgws-config-parent/dgws-config-environment-dev; ./generate_configs.sh <<< 2; popd'
+alias gcb='pushd ~/dev/online/onlinePortfolio/branches/2014.01/dgws-config-parent/dgws-config-environment-dev; ./generate_configs.sh; popd'
+alias h=history
+alias idea=idea.sh
+alias pd=pushd
+alias pdl='pushd $TOMCAT_HOME/logs'
+alias pdt='pushd $HOME/dev/online/onlinePortfolio/trunk; ls'
+alias psl='ps -auxww'
+alias so=source
+alias mvn='mvn --global-settings "/usr/local/share/mvn/settings.xml"'
+alias mi='mvn -T 2 install'
+alias mi1='mvn install'
+alias mis='mvn -T 2 install -DskipTests'
+alias mis1='mvn install -DskipTests'
+alias mci='mvn -T 2 clean install'
+alias mci1='mvn clean install'
+alias mcis='mvn -T 2 clean install -DskipTests'
+alias mcis1='mvn clean install -DskipTests'
+alias rml='rm $TOMCAT_HOME/logs/*.log* $TOMCAT_HOME/logs/*.out $TOMCAT_HOME/logs/*.txt'
+alias rmw="find ./ -name "*.war" -exec rm '{}' \;"
+
+alias rebash='source ~/.bashrc'
+
+alias svd='svn diff'
+alias svc='svn ci'
+alias svs='svn status'
+alias svu='svn update'
+alias svi='svn info | grep URL'
+alias svf='svn status | grep -v Performing | grep -v conf | egrep -v "*.iml" | egrep "^M|^C|^?"'
+alias sx='x11vnc -ncache 10 -ncache_cr -repeat -usepw -auth $HOME/.Xauthority -display :0';
+
+alias aps='sudo service httpd start'
+alias apd='sudo service httpd stop'
+#alias tcs='$TOMCAT_HOME/bin/startup.sh; tail -f $TOMCAT_HOME/logs/catalina.out | fgrep "Server startup"'
+alias tcs=start_tomcat.sh
+#alias tcd='$TOMCAT_HOME/bin/shutdown.sh'
+alias tcd=stop_tomcat.sh
+alias tct='tail -f $TOMCAT_HOME/logs/catalina.out'
+alias tcr='tcd; rml; tcs'
+alias tl='tail -f $TOMCAT_HOME/logs/myDigitalGlobe.log'
+
+alias syns='synergys -f --config $HOME/.synergy_config'
+alias syncl='synergyc -n Linux dgcybz0m1'
+alias synck='pkill synergyc'
+alias resync='pkill synergyc; syncl; psl | grep synergy'
+
+# url tests
+alias runurl='$DGWS_HOME/tools/trunk/shell/run_dgws_local_test.sh'
+alias runurl1='$HOME/bin/run_dgws_local_test1.sh'
+alias runurli='$DGWS_HOME/tools/trunk/shell/run_dgws_integration_test.sh'
+alias runurli1='$HOME/bin/run_dgws_integration_test1.sh'
+
+# pretty-print test results ( tom recommends use of extractFailureInfo which is basically what shows up in Jenkins for testing results )
+alias xsltp='xsltproc $DGWS_HOME/tools/trunk/urlTesting/src/main/resources/xslt/extractFailureInfo.xslt $DGWS_HOME/tools/trunk/urlTesting/target/surefire-reports/TEST.testHarness.xml'
+alias xsltps='xsltproc $DGWS_HOME/tools/trunk/urlTesting/src/main/resources/xslt/failureSummary.xslt $DGWS_HOME/tools/trunk/urlTesting/target/surefire-reports/TEST.testHarness.xml'
+
+# Squirrel SQL
+alias ssql=/opt/SQuirreLSQLClient/squirrel-sql.sh
+
+alias watch='watch -n 1 -d'
+alias pbcopy='xclip -selection clipboard'
+
+
+#alias cpb="rsync -r --exclude='WEB-INF/classes' --exclude='*.jar' --exclude='*.MF' --exclude='maven' $TOMCAT_HOME/webapps/mydg/ ~/dev/online/onlinePortfolio/trunk/mydg/src/main/webapp/; rmw; mis; cpwar `findw`; pd; tail -f $TOMCAT_HOME/logs/mydg.log"
+
+#alias cpbc="rsync -r --exclude='WEB-INF/classes' --exclude='*.jar' --exclude='*.MF' --exclude='maven' $TOMCAT_HOME/webapps/mydg/ ~/dev/online/onlinePortfolio/trunk/mydg/src/main/webapp/; rmw; mcis; cpwar `findw`; pd; tail -f $TOMCAT_HOME/logs/mydg.log"
