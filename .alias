@@ -49,7 +49,7 @@ alias apd='sudo service httpd stop'
 alias tcs=start_tomcat.sh
 #alias tcd='$TOMCAT_HOME/bin/shutdown.sh'
 alias tcd=stop_tomcat.sh
-alias tct='tail -f $TOMCAT_HOME/logs/catalina.out'
+alias tct='tail -F $TOMCAT_HOME/logs/catalina.out'
 alias tcr='tcd; rml; tcs'
 alias tl='tail -f $TOMCAT_HOME/logs/myDigitalGlobe.log'
 
