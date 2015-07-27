@@ -1,11 +1,11 @@
 #!/bin/bash
  
 # Using symbolic link to to specify webapps directory -- either webapps.all to run everything locally or webapps.myDG to run just myDG locally
-DEST_DIR=/dg/local/cots/tomcat/tomcat_8080/webapps/
+DEST_DIR=$TOMCAT_HOME/webapps/
 #DEST_DIR=/dg/local/cots/tomcat/tomcat_8080/webapps.all/
 #DEST_DIR=/dg/local/cots/tomcat/tomcat_8080/webapps.somelocal/
 
-SVN_DIR=$HOME/dev/online/onlinePortfolio/trunk
+SVN_DIR=$DEV_HOME/svn_onlinePortfolio
 #SVN_DIR=$HOME/dev/online/onlinePortfolio/branches/2015.01
 #SVN_DIR=$HOME/dev/online/sandbox/Hackathon-Spring-2015
  

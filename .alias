@@ -73,6 +73,7 @@ alias ssql=/opt/SQuirreLSQLClient/squirrel-sql.sh
 
 alias watch='watch -n 1 -d'
 alias pbcopy='xclip -selection clipboard'
+alias grep='grep --color=auto'
 
 
 #alias cpb="rsync -r --exclude='WEB-INF/classes' --exclude='*.jar' --exclude='*.MF' --exclude='maven' $TOMCAT_HOME/webapps/mydg/ ~/dev/online/onlinePortfolio/trunk/mydg/src/main/webapp/; rmw; mis; cpwar `findw`; pd; tail -f $TOMCAT_HOME/logs/mydg.log"
