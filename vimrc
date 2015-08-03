@@ -66,5 +66,7 @@ let &guicursor = &guicursor . ",a:blinkon0"
 " size of a hard tabstop
 set tabstop=4
 set expandtab
+" set formatoptions-=cro
+au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " filetype plugin indent on
