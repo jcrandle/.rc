@@ -1,5 +1,5 @@
 
-if [ -e $TOMCAT_HOME/logs/*.log* ]; then
+if [ -e "$TOMCAT_HOME/logs/*.log*" ]; then
     rm $TOMCAT_HOME/logs/*.log* $TOMCAT_HOME/logs/*.out $TOMCAT_HOME/logs/*.txt
 fi
 
@@ -11,4 +11,4 @@ do
 done
 
 
-echo "Tomcat started with process Id: `ps ax | grep tomcat | grep 'Bootstrap start' | cut -d' ' -f1`"
+echo "Tomcat started with process Id: $(get_tomcat_pid.sh)"

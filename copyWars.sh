@@ -56,9 +56,11 @@ done
 #$SVN_DIR/mapService/target/mapservice.war 
 #$SVN_DIR/earthService/target/earthservice.war
 
-# Kill tomcat because it rarely shuts down nicely
-tomcat_pid=`ps ax | grep tomcat | grep 'Bootstrap start' | sed -e 's/^[[:space:]]*//' | cut -d' ' -f1`
-echo "Tomcat pid: $tomcat_pid"
+# Try stopping tomcat nicely first
+source stop_tomcat.sh
+
+# If it's still running, just kill it
+tomcat_pid=$(get_tomcat_pid.sh)
 if [ ! -z "$tomcat_pid" -a "$tomcat_pid" != "" ]; then
     echo "Killing tomcat with process Id: $tomcat_pid"
     kill -9 $tomcat_pid
