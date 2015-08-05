@@ -56,6 +56,20 @@ done
 #$SVN_DIR/mapService/target/mapservice.war 
 #$SVN_DIR/earthService/target/earthservice.war
 
+# Kill tomcat because it rarely shuts down nicely
+tomcat_pid=`ps ax | grep tomcat | grep 'Bootstrap start' | sed -e 's/^[[:space:]]*//' | cut -d' ' -f1`
+echo "Tomcat pid: $tomcat_pid"
+if [ ! -z "$tomcat_pid" -a "$tomcat_pid" != "" ]; then
+    echo "Killing tomcat with process Id: $tomcat_pid"
+    kill -9 $tomcat_pid
+fi
+
+
+if [ -e "$TOMCAT_HOME/webapps/myDigitalGlobe" ]; then
+    echo "Removing all myDigitalGlobe webapp assets from $TOMCAT_HOME/webapps"
+    rm -rf $TOMCAT_HOME/webapps/myDigitalGlobe*
+fi
+
 for WAR in \
 $SVN_DIR/mydg/target/myDigitalGlobe.war
 
@@ -71,3 +85,5 @@ do
    cp -v $WAR $DEST_DIR
  fi
 done
+
+start_tomcat.sh

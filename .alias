@@ -5,8 +5,8 @@ alias blog='less /tmp/build_portfolio_$(date +\%m\%d).out'
 alias blogs='less /tmp/build_portfolio_$(date +\%m\%d).out | grep SUCCESS | grep BUILD; ll $TOMCAT_HOME/webapps/*.war'
 
 alias cdd='cd $DEV_HOME; pwd; ll'
-alias cdt='cd $DEV_HOME/svn_onlinePortfolio; pwd; ls'
-alias cddg='cd $DEV_HOME/svn_onlinePortfolio/mydg; pwd; ls'
+alias cdt='cd $TOMCAT_HOME; pwd; ll'
+alias cddg='cd $DEV_HOME/svn_onlinePortfolio/mydg; pwd; ll'
 alias cw='cpwar `findw`'
 alias e=emacs
 alias f5tst='java -Df5.properties=services-test.properties -jar $HOME/dev/online/tools/trunk/f5Explore/target/f5Explore*.jar output=poolsOnly'
@@ -52,6 +52,7 @@ alias tcd=stop_tomcat.sh
 alias tct='tail -F $TOMCAT_HOME/logs/catalina.out'
 alias tcr='tcd; rml; tcs'
 alias tl='tail -f $TOMCAT_HOME/logs/myDigitalGlobe.log'
+alias tck="kill -9 $(ps ax | grep tomcat | grep 'Bootstrap start' | cut -d' ' -f1)"
 
 alias syns='synergys -f --config $HOME/.synergy_config'
 alias syncl='synergyc -n Linux dgcybz0m1'
