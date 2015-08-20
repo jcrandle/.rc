@@ -1,7 +1,7 @@
 #!/bin/bash
  
 # Using symbolic link to to specify webapps directory -- either webapps.all to run everything locally or webapps.myDG to run just myDG locally
-DEST_DIR=$TOMCAT_HOME/webapps/
+DEST_DIR=$TOMCAT_HOME/webapps
 #DEST_DIR=/dg/local/cots/tomcat/tomcat_8080/webapps.all/
 #DEST_DIR=/dg/local/cots/tomcat/tomcat_8080/webapps.somelocal/
 
@@ -9,21 +9,45 @@ SVN_DIR=$DEV_HOME/svn_onlinePortfolio
 #SVN_DIR=$HOME/dev/online/onlinePortfolio/branches/2015.01
 #SVN_DIR=$HOME/dev/online/sandbox/Hackathon-Spring-2015
  
-# remove old exploded directories
-for EXPLODED in $DEST_DIR/deliveryservice $DEST_DIR/dgwatch-global $DEST_DIR/earthservice $DEST_DIR/mapservice $DEST_DIR/memberManager $DEST_DIR/memberServices $DEST_DIR/orderservice $DEST_DIR/res $DEST_DIR/rulesService $DEST_DIR/services $DEST_DIR/wfsservice $DEST_DIR/myDigitalGlobe $DEST_DIR/tileManagerConsole $DEST_DIR/wpsservice $DEST_DIR/bulk-tile
+# Try stopping tomcat nicely first
+source stop_tomcat.sh
 
+# If it's still running, just kill it
+tomcat_pid=$(get_tomcat_pid.sh)
+if [ ! -z "$tomcat_pid" -a "$tomcat_pid" != "" ]; then
+    echo "Killing tomcat with process Id: $tomcat_pid"
+    kill -9 $tomcat_pid
+fi
+
+# remove old exploded directories
+for EXPLODED in \
+    $DEST_DIR/deliveryservice \
+    $DEST_DIR/dgwatch-global \
+    $DEST_DIR/earthservice \
+    $DEST_DIR/mapservice \
+    $DEST_DIR/memberManager \
+    $DEST_DIR/memberServices \
+    $DEST_DIR/orderservice \
+    $DEST_DIR/res \
+    $DEST_DIR/rulesService \
+    $DEST_DIR/services \
+    $DEST_DIR/wfsservice \
+    $DEST_DIR/myDigitalGlobe \
+    $DEST_DIR/tileManagerConsole \
+    $DEST_DIR/wpsservice \
+    $DEST_DIR/bulk-tile
 do
- if [[ "" != "$1" ]]
-   then
-     dirpattern="$1"
-     if [[ "$EXPLODED" != "${EXPLODED%$dirpattern}" ]]
-       then
-         rm -Rf $EXPLODED
-     fi
-   else
-     rm -Rf $EXPLODED
- fi
-  
+    if [[ "" != "$1" ]]
+    then
+        dirpattern="$1"
+        if [[ "$EXPLODED" != "${EXPLODED%$dirpattern}" ]]
+        then
+            rm -Rf $EXPLODED
+        fi
+    else
+        rm -Rf $EXPLODED
+        rm -Rf $EXPLODED.war
+    fi
 done
   
 # copy newly built jars to tomcat for re-starting
@@ -56,21 +80,11 @@ done
 #$SVN_DIR/mapService/target/mapservice.war 
 #$SVN_DIR/earthService/target/earthservice.war
 
-# Try stopping tomcat nicely first
-source stop_tomcat.sh
 
-# If it's still running, just kill it
-tomcat_pid=$(get_tomcat_pid.sh)
-if [ ! -z "$tomcat_pid" -a "$tomcat_pid" != "" ]; then
-    echo "Killing tomcat with process Id: $tomcat_pid"
-    kill -9 $tomcat_pid
-fi
-
-
-if [ -e "$TOMCAT_HOME/webapps/myDigitalGlobe" ]; then
-    echo "Removing all myDigitalGlobe webapp assets from $TOMCAT_HOME/webapps"
-    rm -rf $TOMCAT_HOME/webapps/myDigitalGlobe*
-fi
+#if [ -e "$TOMCAT_HOME/webapps/myDigitalGlobe" ]; then
+#    echo "Removing all myDigitalGlobe webapp assets from $TOMCAT_HOME/webapps"
+#    rm -rf $TOMCAT_HOME/webapps/myDigitalGlobe*
+#fi
 
 for WAR in \
 $SVN_DIR/mydg/target/myDigitalGlobe.war
