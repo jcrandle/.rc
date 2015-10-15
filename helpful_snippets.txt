@@ -1,0 +1,3 @@
+
+find ./ -name *.html -exec sed -i 's/class\=\"modal\"/class\=\"modal fade\"/g' {} +
+

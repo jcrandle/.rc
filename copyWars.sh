@@ -14,6 +14,7 @@ source stop_tomcat.sh
 
 # If it's still running, just kill it
 tomcat_pid=$(get_tomcat_pid.sh)
+echo "Tomcat process id: $tomcat_pid"
 if [ ! -z "$tomcat_pid" -a "$tomcat_pid" != "" ]; then
     echo "Killing tomcat with process Id: $tomcat_pid"
     kill -9 $tomcat_pid

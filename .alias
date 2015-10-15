@@ -12,7 +12,7 @@ alias e=emacs
 alias f5tst='java -Df5.properties=services-test.properties -jar $HOME/dev/online/tools/trunk/f5Explore/target/f5Explore*.jar output=poolsOnly'
 alias f5int='java -Df5.properties=services-int.properties -jar $HOME/dev/online/tools/trunk/f5Explore/target/f5Explore*.jar output=poolsOnly'
 alias findw="find ./ -name \"*.war\""
-alias gc='pushd ~/dev/online/onlinePortfolio/trunk/dgws-config-parent/dgws-config-environment-dev; ./generate_configs.sh <<< 2; popd'
+alias gc='pushd /usr/local/projects/svn_onlinePortfolio/dgws-config-parent/dgws-config-environment-dev; ./generate_configs.sh <<< 1; popd'
 alias gcb='pushd ~/dev/online/onlinePortfolio/branches/2014.01/dgws-config-parent/dgws-config-environment-dev; ./generate_configs.sh; popd'
 alias h=history
 alias idea=idea.sh
@@ -24,7 +24,7 @@ alias so=source
 alias mvn='mvn --global-settings "/usr/local/share/mvn/settings.xml"'
 alias mi='mvn -T 2 install'
 alias mi1='mvn install'
-alias mis='mvn -T 2 install -DskipTests; copyWars.sh'
+alias mis='mvn -T 2 clean install -DskipTests; copyWars.sh'
 alias mis1='mvn install -DskipTests'
 alias mci='mvn -T 2 clean install'
 alias mci1='mvn clean install'
@@ -76,6 +76,8 @@ alias watch='watch -n 1 -d'
 alias pbcopy='xclip -selection clipboard'
 alias grep='grep --color=auto'
 
+alias wf="/usr/local/bin/wf westminster, colorado now"
+alias wff="/usr/local/bin/wf westminster, colorado"  #wf full
 
 #alias cpb="rsync -r --exclude='WEB-INF/classes' --exclude='*.jar' --exclude='*.MF' --exclude='maven' $TOMCAT_HOME/webapps/mydg/ ~/dev/online/onlinePortfolio/trunk/mydg/src/main/webapp/; rmw; mis; cpwar `findw`; pd; tail -f $TOMCAT_HOME/logs/mydg.log"
 
