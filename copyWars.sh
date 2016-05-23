@@ -5,7 +5,7 @@ DEST_DIR=$TOMCAT_HOME/webapps
 #DEST_DIR=/dg/local/cots/tomcat/tomcat_8080/webapps.all/
 #DEST_DIR=/dg/local/cots/tomcat/tomcat_8080/webapps.somelocal/
 
-SVN_DIR=$DEV_HOME/svn_onlinePortfolio
+SVN_DIR=$PROJECTS/onlinePortfolio
 #SVN_DIR=$HOME/dev/online/onlinePortfolio/branches/2015.01
 #SVN_DIR=$HOME/dev/online/sandbox/Hackathon-Spring-2015
  

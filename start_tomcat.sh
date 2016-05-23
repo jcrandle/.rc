@@ -1,5 +1,6 @@
 
-if [ -e "$TOMCAT_HOME/logs/*.log*" ]; then
+if [ -e "$TOMCAT_HOME/logs/catalina.out" ]; then
+    echo "Removing log files."
     rm $TOMCAT_HOME/logs/*.log* $TOMCAT_HOME/logs/*.out $TOMCAT_HOME/logs/*.txt
 fi
 
