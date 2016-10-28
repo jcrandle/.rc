@@ -3,7 +3,7 @@ export PROJECTS="/usr/share/projects"
 
 export DGWS_CONFIG_DIR='/dg/local/cots/dgcs/appdata/dgwsConfigs'
 export JRE_HOME='/etc/alternatives/java_sdk_1.7.0'
-#export JAVA_HOME='/etc/alternatives/java'
+#export JRE_HOME='/etc/alternatives/java'
 export JAVA_HOME="$JRE_HOME/jre"
   
 export CATALINA_HOME='/dg/local/cots/tomcat'

@@ -18,6 +18,7 @@ alias gc='pushd /usr/local/projects/svn_onlinePortfolio/dgws-config-parent/dgws-
 alias gcb='pushd ~/dev/online/onlinePortfolio/branches/2014.01/dgws-config-parent/dgws-config-environment-dev; ./generate_configs.sh; popd'
 alias h=history
 alias idea=idea.sh
+alias killtomcat="ps ax | grep tomcat | grep java | awk '{print \$1}' | xargs -iasdf kill -9 asdf"
 alias pd=pushd
 alias pdl='pushd $TOMCAT_HOME/logs'
 alias pdt='pushd $HOME/dev/online/onlinePortfolio/trunk; ls'
@@ -35,6 +36,10 @@ alias rml='rm $TOMCAT_HOME/logs/*.log* $TOMCAT_HOME/logs/*.out $TOMCAT_HOME/logs
 alias rmw="find ./ -name "*.war" -exec rm '{}' \;"
 
 alias rebash='source ~/.bashrc'
+
+alias sshjump='ssh gdwsjmplgmt02'
+alias sshmgmt="ssh mgmt.gcs-cloud.com"
+
 
 alias svd='svn diff'
 alias svc='svn ci'
